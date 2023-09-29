@@ -27,6 +27,10 @@
 import { useState, useEffect } from "react";
 import Axios from "axios"; // Import Axios which same as fetch
 
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button, Form, ListGroup, Container, Badge } from 'react-bootstrap';
+
 export default function App() {
 
   const api = "http://localhost:3001";
@@ -63,27 +67,58 @@ export default function App() {
   }
 
   return (
-  <>
-    {users.map(function({_id, name, age, email}) {
-      return(
-        <div className="card" key={_id}>
-          <ul>
+  <Container>
+      <Form className="form">
+        <Form.Group className="mb-3" controlId="formGroupName">
+          <Form.Label>Name</Form.Label>
+          <Form.Control type="text" placeholder="Enter name" onChange={e => setName(e.target.value)} />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formGroupAge">
+          <Form.Label>Age</Form.Label>
+          <Form.Control type="number" placeholder="Enter age" onChange={e => setAge(e.target.value)} />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formGroupEmail">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control type="email" placeholder="Enter email" onChange={e => setEmail(e.target.value)} />
+        </Form.Group>
+        <Button variant="dark" onClick={createUser}>Create User</Button>
+        {errorMessage && <div className="error-message">{errorMessage}</div>}
+      </Form>
 
-            <li>Name: {name}</li>
-            <li>Age: {age}</li>
-            <li>Email: {email}</li>
-          </ul>
-        </div>
-      )
-    })}
+      <div>
+        {users.map(function({_id, name, age, email}) {
+          return(
 
-    <div>
-      <input type="text" placeholder="Name" onChange={e => setName(e.target.value)} />
-      <input type="number" placeholder="Age" onChange={e => setAge(e.target.value)} />
-      <input type="text" placeholder="Email" onChange={e => setEmail(e.target.value)} />
-      <button onClick={createUser}>Create User</button>
-      {errorMessage && <div className="error-message">{errorMessage}</div>}
-    </div>
-  </>
+            <ListGroup key={_id} className="card">
+              <ListGroup.Item>Name: {name}</ListGroup.Item>
+              <ListGroup.Item>Age: {age}</ListGroup.Item>
+              <ListGroup.Item>Email: {email}</ListGroup.Item>
+            </ListGroup>
+  )
+})}
+      </div>
+  </Container>
   )
 }
+
+/*
+{users.map(function({_id, name, age, email}) {
+  return(
+    <div className="card" key={_id}>
+      <ul>
+        <li>Name: {name}</li>
+        <li>Age: {age}</li>
+        <li>Email: {email}</li>
+      </ul>
+    </div>
+  )
+})}
+
+<div>
+  <input type="text" placeholder="Name" onChange={e => setName(e.target.value)} />
+  <input type="number" placeholder="Age" onChange={e => setAge(e.target.value)} />
+  <input type="text" placeholder="Email" onChange={e => setEmail(e.target.value)} />
+  <button onClick={createUser}>Create User</button>
+  {errorMessage && <div className="error-message">{errorMessage}</div>}
+</div>
+*/
