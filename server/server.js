@@ -7,6 +7,8 @@ const express = require("express"); // Require express package
 const cors = require('cors'); // Require cors package
 const app = express(); // Store express function/package in app variable
 
+app.use(express.json()); // Use express to parse json data
+
 // CONNECT TO DB
 const mongoose = require("mongoose"); // Require mongoose package
 mongoose.connect(`mongodb+srv://hbarry:${password}@cluster0.7c2kgsd.mongodb.net/mernDB?retryWrites=true&w=majority`);
@@ -28,10 +30,18 @@ app.get ("/", function(req, res) { // Get function takes two parameters, route a
     res.send("Hello World") // Response: send message: Hello World  to client
 });
 
+// GET USERES
 // To avoid delay between server and client (finding and getting the info/response), we use async and await, otherwise you will get error message: TypeError: Converting circular structure to JSON
 app.get ("/users", async function(req, res) {
     const users = await User.find();
     res.json(users) // Response: as a json object
+});
+
+// CREATE USER
+app.post ("/createUser", async function(req, res) {
+    const newUser = new User(req.body);
+    await newUser.save();
+    res.json(req.body);
 });
 
 app.listen(3001, function() { // Listen to server: Listen function takes two parameters, port and callback function
