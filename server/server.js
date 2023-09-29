@@ -1,18 +1,8 @@
-// PROTECT DB PASSWORD
-require('dotenv').config();
-const password = process.env.DATABASE_PASSWORD;
-
 // CREATE SERVER
 const express = require("express"); // Require express package
-const cors = require('cors'); // Require cors package
 const app = express(); // Store express function/package in app variable
-
-app.use(express.json()); // Use express to parse json data
-
-// CONNECT TO DB
-const mongoose = require("mongoose"); // Require mongoose package
-mongoose.connect(`mongodb+srv://hbarry:${password}@cluster0.7c2kgsd.mongodb.net/mernDB?retryWrites=true&w=majority`);
-// mongoose.connect("mongodb+srv://hbarry:<password>@cluster0.7c2kgsd.mongodb.net/mernDB?retryWrites=true&w=majority");
+const _PORT = process.env.PORT || 3001; // Set port to 3001 or whatever is in the environment variable PORT
+const cors = require('cors'); // Require cors package
 
 // Allow requests from a specific origin (e.g., http://localhost:3000)
 const allowedOrigin = 'http://localhost:3000';
@@ -20,8 +10,20 @@ const corsOptions = {
   origin: allowedOrigin,
 };
 
-// Enable CORS with the specified options
-app.use(cors(corsOptions));
+app.use(cors(corsOptions)); // Enable CORS with the specified options
+app.use(express.json()); // Use express to parse json data
+
+require('dotenv').config(); // Protect database password
+
+// CONNECT TO DB
+const   username = process.env.DATABASE_USERNAME,
+        password = process.env.DATABASE_PASSWORD,
+        database = process.env.DATABASE_NAME;
+
+const mongoose = require("mongoose"); // Require mongoose package
+mongoose.connect(`mongodb+srv://${username}:${password}@cluster0.7c2kgsd.mongodb.net/${database}?retryWrites=true&w=majority`);
+
+// MODELS
 
 // IMPORT USER MODEL
 const User = require("./models/Users"); // Require User model
@@ -44,6 +46,6 @@ app.post ("/createUser", async function(req, res) {
     res.json(req.body);
 });
 
-app.listen(3001, function() { // Listen to server: Listen function takes two parameters, port and callback function
-    console.log("Server is running on port 3001");
+app.listen(_PORT, function() { // Listen to server: Listen function takes two parameters, port and callback function
+    console.log("Server is running on port " + _PORT + ".");
 });
