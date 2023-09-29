@@ -1,35 +1,9 @@
-// import logo from './logo.svg';
-// import './App.css';
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;
-
 import { useState, useEffect } from "react";
 import Axios from "axios"; // Import Axios which same as fetch
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, Form, ListGroup, Container, Badge } from 'react-bootstrap';
+import { Button, Form, ListGroup, Container } from 'react-bootstrap';
 
 export default function App() {
 
@@ -94,31 +68,9 @@ export default function App() {
               <ListGroup.Item>Age: {age}</ListGroup.Item>
               <ListGroup.Item>Email: {email}</ListGroup.Item>
             </ListGroup>
-  )
-})}
+          )
+      })}
       </div>
   </Container>
   )
 }
-
-/*
-{users.map(function({_id, name, age, email}) {
-  return(
-    <div className="card" key={_id}>
-      <ul>
-        <li>Name: {name}</li>
-        <li>Age: {age}</li>
-        <li>Email: {email}</li>
-      </ul>
-    </div>
-  )
-})}
-
-<div>
-  <input type="text" placeholder="Name" onChange={e => setName(e.target.value)} />
-  <input type="number" placeholder="Age" onChange={e => setAge(e.target.value)} />
-  <input type="text" placeholder="Email" onChange={e => setEmail(e.target.value)} />
-  <button onClick={createUser}>Create User</button>
-  {errorMessage && <div className="error-message">{errorMessage}</div>}
-</div>
-*/
