@@ -40,7 +40,7 @@ export default function App() {
     .then(function(res) {
       setUsers(res.data);
     })
-  }, []); // Empty array means it will only run once when the page loads
+  }, [users]); // Empty array means it will only run once when the page loads
 
   const createUser = function() {
     Axios.post("http://localhost:3001/createUser", {
