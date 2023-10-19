@@ -46,6 +46,20 @@ app.post ("/createUser", async function(req, res) {
     res.json(req.body);
 });
 
+// IMPORT ADMIN MODEL
+const Admin = require("./models/Admins"); // Require Admin model
+app.post ("/register", async function(req, res) {
+    const { username, password } = req.body
+    const admin = await Admin.findOne({username})
+    if (admin) {
+        res.json({message: "Username already exists!"})
+    } else {
+        const newAdmin = new Admin({username, password});
+        await newAdmin.save();
+        res.json({message: "Admin created successfully!"})
+    }
+});
+
 app.listen(_PORT, function() { // Listen to server: Listen function takes two parameters, port and callback function
     console.log("Server is running on port " + _PORT + ".");
 });
