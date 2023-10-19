@@ -8,9 +8,9 @@ This repository is created to practice MERN Stack.
 
 ## :computer: Usage
 
-Due to costs associated with hosting a server and database, this app is not deployed. To run the app, follow these instructions:
+This app is not deployed yet. To run the app, please follow these instructions:
 
-Clone the repo and run ```npm start``` on both the client and server side.
+- Clone the repo and run ```npm start``` on both the client and server side.
 
 ### Preview
 
@@ -36,6 +36,9 @@ Clone the repo and run ```npm start``` on both the client and server side.
 
 <img width="1158" alt="SMERN Stack Preview" src="https://github.com/hbarry89/MERN-Practice/assets/106551259/24ea5e0f-c198-4955-a913-e3bea31405a1">
 
+## :confetti_ball: Features
+- TBA
+
 ## :wrench: Technologies Used
 
 - MongoDB
@@ -43,12 +46,22 @@ Clone the repo and run ```npm start``` on both the client and server side.
 - React
 - Node.js
 - Bootstrap
+
+**Tools:**
 - VS Code
 - MongoDB Compass
 
+### Packages
+- For a list of all [npm](https://www.npmjs.com/) packages used in this application, please refer to the *package.json* files.
+
+## :bulb: Future Development
+- Make the app a CRUD app, allowing users to create, read, update, and delete entries.
+- Enhance UI.
+
 ## :books: Resources
 
-- [Tutorial](https://www.youtube.com/watch?v=Akt98GIXArg) 
+- [Tutorial 1](https://www.youtube.com/watch?v=Akt98GIXArg)
+- [Tutorial 2](https://www.youtube.com/watch?v=qu7SK7ZoKCE) 
 - [ChatGPT](https://openai.com/blog/chatgpt)
 
 <p align="center">Thank you for visiting! :ribbon:</p>
