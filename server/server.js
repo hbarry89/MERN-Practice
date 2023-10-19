@@ -3,6 +3,7 @@ const express = require("express"); // Require express package
 const app = express(); // Store express function/package in app variable
 const _PORT = process.env.PORT || 3001; // Set port to 3001 or whatever is in the environment variable PORT
 const cors = require('cors'); // Require cors package
+const bcrypt = require('bcrypt'); // Require bcrypt package for hashing passwords
 
 // Allow requests from a specific origin (e.g., http://localhost:3000)
 const allowedOrigin = 'http://localhost:3000';
@@ -54,9 +55,12 @@ app.post ("/register", async function(req, res) {
     if (admin) {
         res.json({message: "Username already exists!"})
     } else {
-        const newAdmin = new Admin({username, password});
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const newAdmin = new Admin({
+            username,
+            password: hashedPassword});
         await newAdmin.save();
-        res.json({message: "Admin created successfully!"})
+        return res.json({message: "Admin created successfully!"})
     }
 });
 
