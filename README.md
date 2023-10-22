@@ -8,9 +8,10 @@ This repository is created to practice MERN Stack.
 
 ## :desktop_computer: Usage
 
-This app is not deployed yet. To run the app, please follow these instructions:
+This app is not deployed yet.
 
-- Clone the repo and run ```npm start``` on both the client and server side.
+To run the app locally, please follow these instructions:
+- Clone the repo and run ```npm start``` on both the client and server sides.
 
 ### Preview
 
@@ -37,7 +38,13 @@ This app is not deployed yet. To run the app, please follow these instructions:
 <img width="1158" alt="SMERN Stack Preview" src="https://github.com/hbarry89/MERN-Practice/assets/106551259/24ea5e0f-c198-4955-a913-e3bea31405a1">
 
 ## :confetti_ball: Features
-- TBA
+- MERN Stack.
+- CRUD app.
+- User registeration and log in.
+- Passwrod is hashed and salted via bcrypt.
+- User authentication with JWT.
+- Connection to MongoDB database.
+- Form validation.
 
 ## :wrench: Technologies Used
 
@@ -52,11 +59,17 @@ This app is not deployed yet. To run the app, please follow these instructions:
 - MongoDB Compass
 - Postman
 
-### Packages
-- For a list of all [npm](https://www.npmjs.com/) packages used in this application, please refer to the *package.json* files.
+### Packages:
+- Axios
+- bcrypt
+- cors
+- dotenv
+- express
+- mongoose
+- jsonwebtoken
+- react-bootstrap
 
 ## :bulb: Future Development
-- Make the app a CRUD app, allowing users to create, read, update, and delete entries.
 - Enhance UI.
 
 ## :books: Resources

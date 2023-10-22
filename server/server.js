@@ -4,6 +4,7 @@ const app = express(); // Store express function/package in app variable
 const _PORT = process.env.PORT || 3001; // Set port to 3001 or whatever is in the environment variable PORT
 const cors = require('cors'); // Require cors package
 const bcrypt = require('bcrypt'); // Require bcrypt package for hashing passwords
+const jwt = require('jsonwebtoken'); // Require jsonwebtoken package for creating tokens
 
 // Allow requests from a specific origin (e.g., http://localhost:3000)
 const allowedOrigin = 'http://localhost:3000';
@@ -62,6 +63,20 @@ app.post ("/register", async function(req, res) {
         await newAdmin.save();
         return res.json({message: "Admin created successfully!"})
     }
+});
+
+app.post ("/login", async function(req, res) {
+    const { username, password } = req.body
+    const admin = await Admin.findOne({username})
+    if (!admin) {
+        res.json({message: "Username or password is incorrect."})
+    }
+    const isPasswordValid = await bcrypt.compare(password, admin.password);
+    if (!isPasswordValid) {
+        res.json({message: "Username or password is incorrect."})
+    }
+    const token = jwt.sign({id: admin._id}, process.env.SECRET); // Sign is a method from jwt package that takes two parameters: json object which contains the id and secret.
+    return res.json({token, adminID: admin._id})
 });
 
 app.listen(_PORT, function() { // Listen to server: Listen function takes two parameters, port and callback function
