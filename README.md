@@ -13,7 +13,7 @@ This app is not deployed yet.
 To run the app locally, please follow these instructions:
 - Clone the repo and run ```npm start``` on both the client and server sides.
 
-### Preview
+### Preview:
 
 - Form to enter values:
 
@@ -41,18 +41,24 @@ To run the app locally, please follow these instructions:
 - MERN Stack.
 - CRUD app.
 - User registeration and log in.
-- Passwrod is hashed and salted via bcrypt.
-- User authentication with JWT.
+- Passwrod is hashed and salted.
+- User authentication.
 - Connection to MongoDB database.
+- Storing IDs to localStorage
+- Storing tokens to cookies.
 - Form validation.
+- Responsive design.
 
 ## :wrench: Technologies Used
 
-- MongoDB
-- Express.js
-- React
-- Node.js
-- Bootstrap
+- MongoDB for database.
+- Express.js for server.
+- React for frontend.
+- Node.js for backend.
+- Bootstrap for styling.
+- Bycrypt for hasing and salting passwords.
+- JWT for user authentication.
+- Axios for HTTP requests.
 
 ### Tools:
 - VS Code
@@ -68,6 +74,7 @@ To run the app locally, please follow these instructions:
 - mongoose
 - jsonwebtoken
 - react-bootstrap
+- react-cookie
 
 ## :bulb: Future Development
 - Enhance UI.
